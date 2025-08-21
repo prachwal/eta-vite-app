@@ -35,7 +35,7 @@ router.post("/api/users", (req, res) => {
       console.log(
         JSON.stringify({
           level: "warn",
-            endpoint: "/api/users",
+          endpoint: "/api/users",
           method: req.method,
           timestamp: new Date().toISOString(),
           request: { headers: req.headers, body: req.body },
@@ -51,7 +51,7 @@ router.post("/api/users", (req, res) => {
     console.log(
       JSON.stringify({
         level: "info",
-  endpoint: "/api/users",
+        endpoint: "/api/users",
         method: req.method,
         timestamp: new Date().toISOString(),
         request: { headers: req.headers, body: req.body },
@@ -69,7 +69,7 @@ router.post("/api/users", (req, res) => {
     console.log(
       JSON.stringify({
         level: "error",
-  endpoint: "/api/users",
+        endpoint: "/api/users",
         method: req.method,
         timestamp: new Date().toISOString(),
         request: { headers: req.headers, body: req.body },
