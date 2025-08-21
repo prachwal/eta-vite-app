@@ -3,7 +3,7 @@ import { createSuccessResponse, createErrorResponse } from "./types";
 
 const router = express.Router();
 
-router.get("/hello", (req, res) => {
+router.get("/api/hello", (req, res) => {
   const response = createSuccessResponse({
     message: "Hello from Express + TypeScript!",
   });
@@ -22,7 +22,7 @@ router.get("/hello", (req, res) => {
   res.json(response);
 });
 
-router.post("/users", (req, res) => {
+router.post("/api/users", (req, res) => {
   try {
     const { name } = req.body;
 
@@ -35,7 +35,7 @@ router.post("/users", (req, res) => {
       console.log(
         JSON.stringify({
           level: "warn",
-          endpoint: "/users",
+            endpoint: "/api/users",
           method: req.method,
           timestamp: new Date().toISOString(),
           request: { headers: req.headers, body: req.body },
@@ -51,7 +51,7 @@ router.post("/users", (req, res) => {
     console.log(
       JSON.stringify({
         level: "info",
-        endpoint: "/users",
+  endpoint: "/api/users",
         method: req.method,
         timestamp: new Date().toISOString(),
         request: { headers: req.headers, body: req.body },
@@ -69,7 +69,7 @@ router.post("/users", (req, res) => {
     console.log(
       JSON.stringify({
         level: "error",
-        endpoint: "/users",
+  endpoint: "/api/users",
         method: req.method,
         timestamp: new Date().toISOString(),
         request: { headers: req.headers, body: req.body },
