@@ -46,3 +46,4 @@ import { writable } from 'svelte/store'
 export default writable(0)
 ```
 ✅ Projekt został pomyślnie skonfigurowany z automatycznym deployem na Vercel!
+✅ Projekt został pomyślnie skonfigurowany z automatycznym deployem na Vercel!
