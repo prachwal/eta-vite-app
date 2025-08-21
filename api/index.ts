@@ -25,19 +25,19 @@ app.use((req, res, next) => {
 // Use the API router under /api so incoming requests to /api/* match
 app.use("/api", router);
 
-// Catch-all handler dla nieistniejących endpointów
-app.use("/*", (req, res) => {
-  res.status(404).json({
-    status: false,
-    error: {
-      code: "NOT_FOUND",
-      message: "Endpoint not found",
-    },
-  });
-});
-
 // Uruchamiaj serwer tylko lokalnie
 if (process.env.VERCEL !== "1") {
+  // Catch-all handler dla nieistniejących endpointów
+  app.use((req, res) => {
+    res.status(404).json({
+      status: false,
+      error: {
+        code: "NOT_FOUND",
+        message: "Endpoint not found",
+      },
+    });
+  });
+
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log(`API server listening on port ${port}`);

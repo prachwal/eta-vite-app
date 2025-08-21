@@ -22,5 +22,10 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "api/**/*.ts"],
+  "exclude": [
+    "node_modules/.svelte-kit",
+    "node_modules/@types",
+    "node_modules/.svelte2tsx-language-server-files"
+  ]
 }
