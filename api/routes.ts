@@ -3,15 +3,16 @@ import { createSuccessResponse, createErrorResponse } from "./types";
 
 const router = express.Router();
 
-router.get("/api/hello", (req, res) => {
+// GET /api/hello
+router.get("/hello", (req, res) => {
   const response = createSuccessResponse({
     message: "Hello from Express + TypeScript!",
   });
-  // Log request and response in Vercel-friendly JSON format
+
   console.log(
     JSON.stringify({
       level: "info",
-      endpoint: "/hello",
+      endpoint: "/api/hello",
       method: req.method,
       timestamp: new Date().toISOString(),
       request: { headers: req.headers, query: req.query },
@@ -22,7 +23,8 @@ router.get("/api/hello", (req, res) => {
   res.json(response);
 });
 
-router.post("/api/users", (req, res) => {
+// POST /api/users
+router.post("/users", (req, res) => {
   try {
     const { name } = req.body;
 
@@ -46,7 +48,7 @@ router.post("/api/users", (req, res) => {
       return res.status(400).json(errorResponse);
     }
 
-    const user = { id: 1, name };
+    const user = { id: Date.now(), name };
     const response = createSuccessResponse(user);
     console.log(
       JSON.stringify({
