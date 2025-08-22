@@ -2,11 +2,11 @@
     "version": 2,
     "builds": [
         {
-            "src": "dist-api/index.cjs",
+            "src": "api/**/*.ts",
             "use": "@vercel/node",
             "config": {
                 "includeFiles": [
-                    "dist-api/**"
+                    "api/**"
                 ]
             }
         },
@@ -21,7 +21,7 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/dist-api/index.cjs"
+            "dest": "/api/$1"
         },
         {
             "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|webp|avif|mp4|webm|ogg|mp3|wav|flac|aac|map))",
