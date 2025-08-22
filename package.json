@@ -10,7 +10,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "dev:api": "tsx watch api/index.ts",
     "start:api": "tsx api/index.ts",
-    "build:api": "rm -rf dist-api && tsc -p tsconfig.api.json",
+  "build:api": "rm -rf dist-api && tsc -p tsconfig.api.json && for f in dist-api/*.js; do mv \"$f\" \"${f%.js}.cjs\"; done",
     "vercel-build": "npm run build:api && npm run build"
   },
   "devDependencies": {
