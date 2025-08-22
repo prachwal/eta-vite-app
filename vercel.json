@@ -3,7 +3,18 @@
     "builds": [
         {
             "src": "api/**/*.ts",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "api/**"
+                ]
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1.ts"
         }
     ]
 }
