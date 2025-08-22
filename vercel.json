@@ -21,7 +21,7 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/api/$1"
+            "dest": "/api/index.ts"
         },
         {
             "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|webp|avif|mp4|webm|ogg|mp3|wav|flac|aac|map))",
