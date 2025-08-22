@@ -10,8 +10,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "dev:api": "tsx watch api/index.ts",
     "start:api": "tsx api/index.ts",
-  "build:api": "rm -rf dist-api && tsc -p tsconfig.api.json",
-  "vercel-build": "npm run build:api && npm run build"
+    "build:api": "rm -rf dist-api && tsc -p tsconfig.api.json",
+    "vercel-build": "npm run build:api && npm run build"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "6.1.3",
