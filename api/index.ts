@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./routes";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const app = express();
 
@@ -25,6 +26,26 @@ app.use((req, res, next) => {
 // Use the API router under /api so incoming requests to /api/* match
 app.use("/api", router);
 
+// Error handler
+app.use(
+  (
+    err: Error,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    console.error(err.stack);
+    res.status(500).json({
+      status: false,
+      error: {
+        code: "INTERNAL_ERROR",
+        message: "An unexpected error occurred",
+        details: err.message,
+      },
+    });
+  }
+);
+
 // Uruchamiaj serwer tylko lokalnie
 if (process.env.VERCEL !== "1") {
   // Catch-all handler dla nieistniejących endpointów
@@ -45,4 +66,6 @@ if (process.env.VERCEL !== "1") {
 }
 
 // Export dla Vercel
-export default app;
+export default (req: VercelRequest, res: VercelResponse) => {
+  return app(req as any, res as any);
+};
