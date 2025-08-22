@@ -1,23 +1,11 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-
-export default (req: VercelRequest, res: VercelResponse) => {
+export default (req: any, res: any) => {
   if (req.method === "GET") {
     res.status(200).json({
-      status: true,
-      payload: {
-        message: "Hello from Express + TypeScript!",
-      },
-      metadata: {
-        timestamp: new Date().toISOString(),
-      },
+      message: "Hello from Vercel API!",
     });
   } else {
     res.status(405).json({
-      status: false,
-      error: {
-        code: "METHOD_NOT_ALLOWED",
-        message: "Method not allowed",
-      },
+      error: "Method not allowed",
     });
   }
 };
